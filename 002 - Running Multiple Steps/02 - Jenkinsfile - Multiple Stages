@@ -12,7 +12,7 @@ pipeline {
     }
     stage('test') {
     step{
-    grep ${"2023"}
+    sh "grep '2023' test"
     }        
     def saveAndPrintDate(filename = '') {
      sh "date > $filename && cat $filename"
