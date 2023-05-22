@@ -1,22 +1,22 @@
 pipeline {
-    agent { 
-        docker { 
-            image 'alpine:latest' 
-        }
-    }
-    stages {
-    stage('build') {
-      steps {
-        saveAndPrintDate("test")
-        }
-    }
-    stage('test'){
-    steps{
-     sh "grep '2023' test"
-     }
-    }
-}
+  agent {
+    docker {
+      image 'alpine:latest'
+    }
+  }
+  stages {
+    stage('build') {
+      steps {
+        saveAndPrintDate("test")
+      }
+    }
+    stage('test') {
+      steps {
+        sh "grep '2023' test"
+      }
+    }
+  }
 }
 def saveAndPrintDate(filename = '') {
-  sh "date > $filename && cat $filename"
+  sh "date > $filename && cat $filename"
 }
