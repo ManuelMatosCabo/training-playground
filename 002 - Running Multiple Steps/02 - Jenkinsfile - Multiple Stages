@@ -8,14 +8,12 @@ pipeline {
     stages('build') {
     	steps {   
     	saveAndPrintDate("test") 
-	sh "sleep 10s"
-	saveAndPrintDate("test")
 	}
     }
     stage('test') {
     step{
-    grep $("2023")
+    grep ${"2023"}
     }        
-    def saveAndPrintDate(filename = ''){
+    def saveAndPrintDate(filename = '') {
      sh "date > $filename && cat $filename"
 }
