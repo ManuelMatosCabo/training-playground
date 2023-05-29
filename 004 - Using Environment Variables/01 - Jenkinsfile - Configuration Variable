@@ -5,7 +5,7 @@ pipeline {
 		}
 	}
 	
-	enviroment {
+	environment {
 		$NOTIFICATION_EMAIL = 'test@test.test'
 		}
     stages {
