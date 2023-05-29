@@ -1,6 +1,6 @@
 pipeline {
   parameters {
-    choice(name: 'choice', choices: ['1', '2'], description: 'Choose an option')
+    choice(name: 'STAGE', choices: ['Build', 'Test'], description: 'Choose an option')
   }
   agent {
     docker {
@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
       when {
         expression {
-          params.choice == 'Build'
+          params.STAGE == 'Build'
         }
       }
       steps {
@@ -21,7 +21,7 @@ pipeline {
     stage('Test') {
       when {
         expression {
-          params.choice == 'Test'
+          params.STAGE == 'Test'
         }
       }
       steps {
@@ -32,7 +32,4 @@ pipeline {
 }
 
 
-2 stages - 1 build 
-	   1 test
-Perguntar qual correr
 
