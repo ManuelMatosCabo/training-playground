@@ -15,8 +15,8 @@ pipeline {
     stage('node') {
       agent {
         dockerfile {
-          dir '003 - Defining Execution Environments'
-          filename '04 - Dockerfile - NPM'
+          dir '003 - Defining Execution Environments'
+          filename '04 - Dockerfile - NPM'
         }
       }
       steps {
