@@ -1,9 +1,38 @@
 pipeline {
-    agent { 
-		docker { 
-			image 'alpine:latest' 
-		}
-	}
-    stages {
+  parameters {
+    choice(name: 'choice', choices: ['1', '2'], description: 'Choose an option')
+  }
+  agent {
+    docker {
+      image 'alpine:latest'
     }
+  }
+  stages {
+    stage('Build') {
+      when {
+        expression {
+          params.choice == 'Build'
+        }
+      }
+      steps {
+        echo "Building..."
+      }
+    }
+    stage('Test') {
+      when {
+        expression {
+          params.choice == 'Test'
+        }
+      }
+      steps {
+        echo "Testing..."
+      }
+    }
+  }
 }
+
+
+2 stages - 1 build 
+	   1 test
+Perguntar qual correr
+
