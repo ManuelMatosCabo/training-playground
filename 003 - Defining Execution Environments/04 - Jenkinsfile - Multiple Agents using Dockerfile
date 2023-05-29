@@ -1,7 +1,7 @@
 pipeline {
   agent none
   stages {
-    stage {
+    stage ('java') {
       agent {
         dockerfile {
           dir '003 - Defining Execution Enviroments'
@@ -13,7 +13,7 @@ pipeline {
       }
     }
      stage {
-      agent {
+      agent ('node') {
         dockerfile {
           dir '003 - Defining Execution Enviroments'
           filename '04 - Dockerfile - NPM'
