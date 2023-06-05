@@ -1,13 +1,15 @@
 pipeline {
     agent { 
-		docker { 
-			image 'alpine:latest' 
-		}
-	}
+        docker { 
+            image 'maven:3.3.3'
+            args  '--net="training-playground"'
+        }
+    }
     stages {
         stage('tests') {
             steps {
-                sh ""
+                sh "mvn clean install -f '005 - Recording Test Results and Artifacts/03 - Sonar Integration/pom.xml'"
+        sh "mvn sonar:sonar -f '005 - Recording Test Results and Artifacts/03 - Sonar Integration/pom.xml' -Dsonar.host.url=http://sonarqube:9000 -Dsonar.projectName='test-Raphael' -Dsonar.projectKey='test-Raphael'"
             }
         }
     }
